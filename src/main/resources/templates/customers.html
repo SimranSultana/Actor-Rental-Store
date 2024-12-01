@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Customer List</h1>
+        <a href="/customers/add" class="btn btn-primary mb-3">Add Customer</a>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>customer_id</th>
+                    <th>first_name</th>
+                    <th>last_name</th>
+                    <th>email</th>
+                    <th>active</th>
+		   <th>create_date</th>
+		<th>last_date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="customer : ${customers}">
+                    <td th:text="${customer['customer_id']}"></td>
+                    <td th:text="${customer['first_name']}"></td>
+                    <td th:text="${customer['last_name']}"></td>
+                    <td th:text="${customer['email']}"></td>
+			 <td th:text="${customer['active']}"></td>
+			 <td th:text="${customer['create_date']}"></td>
+			 <td th:text="${customer['last_update']}"></td>
+                    <td>
+                        <a th:href="@{/customers/edit(customerId=${customer['customer_id']})}" class="btn btn-warning">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

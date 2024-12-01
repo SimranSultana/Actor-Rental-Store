@@ -1,0 +1,154 @@
+<!-- 
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Actors</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Actors</h1>
+
+<div th:if="${error}">
+    <p style="color:red;">[[${error}]]</p>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Actor ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="actor : ${actors}">
+            <td th:text="${actor.actor_id}"></td>
+            <td th:text="${actor.first_name}"></td>
+            <td th:text="${actor.last_name}"></td>
+          
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+
+-->
+<!--  
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Actors</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Actors</h1>
+
+<div th:if="${error}">
+    <p style="color:red;">[[${error}]]</p>
+</div>
+<div th:if="${updateError}">
+    <p style="color:red;">[[${updateError}]]</p>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Actor ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="actor : ${actors}">
+            <td th:text="${actor.actor_id}"></td>
+            <td th:text="${actor.first_name}"></td>
+            <td th:text="${actor.last_name}"></td>
+            <td><a th:href="@{/actors/{actorId}/edit(actorId=${actor.actor_id})}">Edit</a></td>
+        </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
+
+-->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Actors</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add any custom styles here if needed, keeping it minimal */
+    </style>
+</head>
+<body>
+    <div class="container">  <!-- Added Bootstrap container -->
+        <h1>Actors</h1>
+
+        <div th:if="${error}" class="alert alert-danger"> <!-- Bootstrap alert -->
+            <p th:text="${error}"></p>
+        </div>
+        <div th:if="${updateError}" class="alert alert-danger"> <!-- Bootstrap alert -->
+            <p th:text="${updateError}"></p>
+        </div>
+
+        <table class="table table-bordered">  <!-- Bootstrap table styles -->
+            <thead>
+                <tr>
+                    <th>Actor ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="actor : ${actors}">
+                    <td th:text="${actor.actor_id}"></td>
+                    <td th:text="${actor.first_name}"></td>
+                    <td th:text="${actor.last_name}"></td>
+                    <td><a th:href="@{/actors/{actorId}/edit(actorId=${actor.actor_id})}" class="btn btn-primary btn-sm">Edit</a></td> <!-- Bootstrap button -->
+                </tr>
+            </tbody>
+        </table>
+    </div> <!-- End container -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
